@@ -15,4 +15,16 @@ export class StatsController {
 	async createStats(@Body() statsData: Stats): Promise<Stats> {
 		return this.statsService.create(statsData);
 	}
+
+	@Get('totals')
+	async getTotalValues(): Promise<{
+		totalDispatchedValue: number;
+		totalUndispatchedValue: number;
+	}> {
+		const totalDispatchedValue =
+			await this.statsService.getTotalDispatchedValue();
+		const totalUndispatchedValue =
+			await this.statsService.getTotalUndispatchedValue();
+		return { totalDispatchedValue, totalUndispatchedValue };
+	}
 }
