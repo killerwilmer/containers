@@ -4,6 +4,8 @@ import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ContainerService } from './container/container.service';
 import { ContainerController } from './container/container.controller';
+import { StatsModule } from './stats/stats.module';
+import { Stats } from './stats/stats.entity';
 
 @Module({
 	imports: [
@@ -14,9 +16,10 @@ import { ContainerController } from './container/container.controller';
 			username: 'postgres',
 			password: '123',
 			database: 'kiki',
-			entities: [],
-			synchronize: true, // Esto debería ser 'false' en producción
+			entities: [Stats],
+			synchronize: true,
 		}),
+		StatsModule,
 	],
 	controllers: [AppController, ContainerController],
 	providers: [AppService, ContainerService],
