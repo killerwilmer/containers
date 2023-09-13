@@ -1,7 +1,8 @@
 import { Controller, Post, Body } from '@nestjs/common';
 import { ContainerService } from './container.service';
-import { Stats } from '../stats/stats.entity';
+import { Stats } from '../entity/stats.entity';
 import { StatsService } from '../stats/stats.service';
+import { CreateShipmentDto } from '../dto/create-shipment.dto';
 
 @Controller('containers')
 export class ContainerController {
@@ -10,8 +11,10 @@ export class ContainerController {
 		private readonly statsService: StatsService,
 	) { }
 
-	@Post('select')
-	async selectContainers(@Body() requestData: any): Promise<string[]> {
+	@Post()
+	async selectContainers(
+		@Body() requestData: CreateShipmentDto,
+	): Promise<string[]> {
 		const { budget, containers } = requestData;
 		const selectedContainers = this.containerService.selectContainers(
 			budget,

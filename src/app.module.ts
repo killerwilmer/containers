@@ -5,7 +5,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { ContainerService } from './container/container.service';
 import { ContainerController } from './container/container.controller';
 import { StatsModule } from './stats/stats.module';
-import { Stats } from './stats/stats.entity';
+import { Stats } from './entity/stats.entity';
 
 @Module({
 	imports: [

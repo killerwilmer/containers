@@ -1,9 +1,9 @@
 import { Injectable } from '@nestjs/common';
-import { Container } from './container.model';
+import { ContainerDto } from '../dto/create-shipment.dto';
 
 @Injectable()
 export class ContainerService {
-	selectContainers(budget: number, containers: Container[]): string[] {
+	selectContainers(budget: number, containers: ContainerDto[]): string[] {
 		containers.sort((a, b) => b.value - a.value);
 
 		const selectedContainers: string[] = [];
