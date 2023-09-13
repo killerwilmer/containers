@@ -7,6 +7,7 @@ export class ContainerService {
 		containers.sort((a, b) => b.value - a.value);
 
 		const selectedContainers: string[] = [];
+
 		let currentBudget = budget;
 
 		for (const container of containers) {
