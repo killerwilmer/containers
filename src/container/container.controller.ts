@@ -3,12 +3,14 @@ import { ContainerService } from './container.service';
 import { Stats } from '../entity/stats.entity';
 import { StatsService } from '../stats/stats.service';
 import { CreateShipmentDto } from '../dto/create-shipment.dto';
+import { SocketGateway } from '../socket/socket.gateway';
 
 @Controller('containers')
 export class ContainerController {
 	constructor(
 		private readonly containerService: ContainerService,
 		private readonly statsService: StatsService,
+		private readonly socketGateway: SocketGateway,
 	) { }
 
 	@Post()
@@ -20,6 +22,8 @@ export class ContainerController {
 			budget,
 			containers,
 		);
+
+		this.socketGateway.emitContainerSelection(selectedContainers);
 
 		const dispatchedValue = selectedContainers.reduce(
 			(total, containerName) => {
@@ -46,6 +50,8 @@ export class ContainerController {
 		stats.totalBudget = totalBudget;
 
 		await this.statsService.create(stats);
+
+		this.socketGateway.emitStatsUpdate(stats);
 
 		return selectedContainers;
 	}

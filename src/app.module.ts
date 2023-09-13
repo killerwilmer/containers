@@ -6,6 +6,7 @@ import { ContainerService } from './container/container.service';
 import { ContainerController } from './container/container.controller';
 import { StatsModule } from './stats/stats.module';
 import { Stats } from './entity/stats.entity';
+import { SocketModule } from './socket/socket.module'; // Asegúrate de importar SocketModule
 
 @Module({
 	imports: [
@@ -20,6 +21,7 @@ import { Stats } from './entity/stats.entity';
 			synchronize: true,
 		}),
 		StatsModule,
+		SocketModule,
 	],
 	controllers: [AppController, ContainerController],
 	providers: [AppService, ContainerService],
