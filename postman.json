@@ -1,0 +1,31 @@
+curl --location 'http: //localhost:3000/containers' \
+--header 'Content-Type: application/json' \
+--data '{
+    "budget": 1000,
+    "containers": [
+        {
+            "name": "A",
+            "cost": 800,
+            "value": 500
+        },
+        {
+            "name": "B",
+            "cost": 300,
+            "value": 200
+        },
+        {
+            "name": "C",
+            "cost": 300,
+            "value": 300
+        }
+    ]
+}'
+
+
+
+
+curl --location 'http: //localhost:3000/stats'
+
+
+
+curl --location 'http: //localhost:3000/stats/totals'
