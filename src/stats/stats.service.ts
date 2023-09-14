@@ -24,7 +24,6 @@ export class StatsService {
 			(total, stat) => total + Number(stat.dispatchedValue),
 			0,
 		);
-		console.log(totalDispatchedValue);
 		return Number(totalDispatchedValue);
 	}
 
@@ -34,7 +33,6 @@ export class StatsService {
 			(total, stat) => total + Number(stat.undispatchedValue),
 			0,
 		);
-		console.log(totalUndispatchedValue);
 		return totalUndispatchedValue;
 	}
 }
